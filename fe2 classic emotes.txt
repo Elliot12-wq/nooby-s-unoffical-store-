@@ -1,0 +1,116 @@
+local modules = {}
+-- no music cuz yes
+function AddModule(mod)
+  table.insert(modules, mod)
+end
+-- headspin...
+AddModule(function()
+        local m = {}
+        local musicoptions = {"Steamed Gardens", "None"}
+        m.musicop = 0
+        m.ModuleType = "DANCE"
+	m.Name = "Headspin"
+	m.Description = "\"Show them your sick ski- OMG YOUR HEAD\" -- original description\n hmm yes"
+	m.Assets = {"fe2classic_headspin.anim", "FE2MT - Wall Jump Pratice (Steamed Gardens).mp3"}
+	m.Config = function(parent)
+          Util_CreateDropdown(parent, "Music", musicoptions, m.musicop + 1).Changed:Connect(function(val)
+			m.musicop = val - 1 -- ok
+		end)
+        end
+        m.SaveConfig = function() return {} end
+        m.LoadConfig = function(save) end
+        local who = nil
+        local g = 0
+	m.Init = function(figure: Model)
+                if m.musicop == 0 then
+                    SetOverrideDanceMusic(AssetGetContentId("FE2MT - Wall Jump Pratice (Steamed Gardens).mp3"), "FE2MT - Wall Jump Pratice (Steamed Gardens)", 1)
+                end
+		g = os.clock()
+                who = AnimLib.Animator.new()
+                who.rig = figure
+                who.track = AnimLib.Track.fromfile(AssetGetPathFromFilename("fe2classic_headspin.anim"))
+                who.looped = true
+                who.speed  = 1
+	end
+	m.Update = function(dt: number, figure: Model)
+		who:Step(os.clock() - g)
+	end
+	m.Destroy = function(figure: Model?)
+		who = nil
+	end
+	return m
+end)
+-- dab (cring)
+AddModule(function()
+        local m = {}
+        local musicoptions = {"Steamed Gardens", "None"}
+        m.musicop = 0
+        m.ModuleType = "DANCE"
+	m.Name = "Dab"
+	m.Description = "\"I regret making this\" -- original description\ncring"
+	m.Assets = {"fe2classic_dab.anim", "FE2MT - Wall Jump Pratice (Steamed Gardens).mp3"}
+	m.Config = function(parent)
+          Util_CreateDropdown(parent, "Music", musicoptions, m.musicop + 1).Changed:Connect(function(val)
+			m.musicop = val - 1 -- ok
+		end)
+        end
+        m.SaveConfig = function() return {} end
+        m.LoadConfig = function(save) end
+        local who = nil
+        local g = 0
+	m.Init = function(figure: Model)
+                if m.musicop == 0 then
+                    SetOverrideDanceMusic(AssetGetContentId("FE2MT - Wall Jump Pratice (Steamed Gardens).mp3"), "FE2MT - Wall Jump Pratice (Steamed Gardens)", 1)
+                end
+		g = os.clock()
+                who = AnimLib.Animator.new()
+                who.rig = figure
+                who.track = AnimLib.Track.fromfile(AssetGetPathFromFilename("fe2classic_dab.anim"))
+                who.looped = true
+                who.speed  = 1
+	end
+	m.Update = function(dt: number, figure: Model)
+		who:Step(os.clock() - g)
+	end
+	m.Destroy = function(figure: Model?)
+		who = nil
+	end
+	return m
+end)
+-- searching ahead
+AddModule(function()
+        local m = {}
+ local musicoptions = {"Steamed Gardens", "None"}
+        m.musicop = 0
+        m.ModuleType = "DANCE"
+	m.Name = "Searching Ahead"
+	m.Description = "\"Is that a tidal wave in the distance?\" -- original description\ngd referenc-"
+	m.Assets = {"fe2classic_searchingahead.anim", "FE2MT - Wall Jump Pratice (Steamed Gardens).mp3"}
+	m.Config = function(parent)
+          Util_CreateDropdown(parent, "Music", musicoptions, m.musicop + 1).Changed:Connect(function(val)
+			m.musicop = val - 1 -- ok
+		end)
+        end
+        m.SaveConfig = function() return {} end
+        m.LoadConfig = function(save) end
+        local who = nil
+        local g = 0
+	m.Init = function(figure: Model)
+                if m.musicop == 0 then
+                    SetOverrideDanceMusic(AssetGetContentId("FE2MT - Wall Jump Pratice (Steamed Gardens).mp3"), "FE2MT - Wall Jump Pratice (Steamed Gardens)", 1)
+                end
+		g = os.clock()
+                who = AnimLib.Animator.new()
+                who.rig = figure
+                who.track = AnimLib.Track.fromfile(AssetGetPathFromFilename("fe2classic_searchingahead.anim"))
+                who.looped = true
+                who.speed  = 1
+	end
+	m.Update = function(dt: number, figure: Model)
+		who:Step(os.clock() - g)
+	end
+	m.Destroy = function(figure: Model?)
+		who = nil
+	end
+	return m
+end)
